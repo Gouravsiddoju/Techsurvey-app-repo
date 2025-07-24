@@ -1,38 +1,804 @@
-.App {
-  text-align: center;
-}
+/* src/App.css */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* Global styles and font import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif; /* Primary clean sans-serif font */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f8f8; /* Slightly lighter, softer background */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Align to top on larger screens, center on small */
   min-height: 100vh;
+  padding: 1.5rem; /* Increased overall padding */
+  box-sizing: border-box;
+}
+
+.app-container {
+  background-color: #f8f8f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: 'Inter', sans-serif;
+  width: 100%;
+  max-width: 520px; /* Slightly wider container */
+  box-sizing: border-box;
+}
+
+.main-card {
+  background-color: #ffffff;
+  padding: 2rem; /* More internal padding */
+  border-radius: 1.25rem; /* More rounded corners */
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.18), 0 8px 20px -8px rgba(0, 0, 0, 0.1); /* Softer, deeper shadow */
+  width: 100%;
+  max-width: 480px; /* Adjusted max-width for the card */
+  box-sizing: border-box;
+  transition: all 0.4s ease-in-out; /* Smoother overall card transitions */
+}
+
+/* Header Section */
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem; /* More space below header */
+}
+
+.app-title {
+  font-family: 'Playfair Display', serif; /* Elegant serif for titles */
+  font-size: 2rem; /* Larger title */
+  font-weight: 700;
+  color: #2c2c2c; /* Softer black */
+  letter-spacing: -0.02em; /* Slight letter spacing for elegance */
+}
+
+.header-buttons {
+  display: flex;
+  gap: 0.8rem; /* Increased gap */
+}
+
+.demo-button {
+  padding: 0.7rem 1.4rem; /* More padding */
+  background-color: #e8e8e8; /* Softer light gray */
+  color: #4a4a4a; /* Medium gray text */
+  border-radius: 0.7rem; /* More rounded */
+  font-size: 0.95rem;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease-in-out; /* Smoother hover */
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.demo-button:hover {
+  background-color: #d8d8d8; /* Darker on hover */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.icon-margin {
+  margin-right: 0.6rem; /* Slightly more margin for icons */
+}
+
+/* Device Location Alert */
+.location-alert {
+  background-color: #fff5f5; /* Very light red */
+  border: 1px solid #ffdddd; /* Light red border */
+  color: #d32f2f; /* Dark red text */
+  padding: 1.4rem; /* More padding */
+  border-radius: 0.8rem; /* More rounded */
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Ensure vertical centering */
+  margin-bottom: 1.2rem; /* Adjusted margin */
+  transition: all 0.3s ease-in-out;
+}
+
+.location-content {
+  display: flex;
+  align-items: center; /* Ensure icon and text are vertically aligned */
+  flex-grow: 1; /* Allow content to take available space */
+}
+
+.location-icon {
+  margin-right: 1rem; /* More margin */
+  font-size: 1.5rem; /* Larger icon */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.location-title {
+  font-weight: 700;
+  color: #b71c1c; /* Even darker red for title */
+  margin-bottom: 0.2rem; /* Small margin below title */
+}
+
+.location-text {
+  font-size: 0.95rem;
+  color: #e53935; /* Slightly brighter red for text */
+  line-height: 1.3; /* Ensure readability */
+}
+
+.refresh-button {
+  padding: 0.7rem; /* Larger touch target */
+  border-radius: 50%;
+  transition: all 0.35s ease-in-out; /* Smoother rotation */
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #b71c1c; /* Match location title color */
+  flex-shrink: 0; /* Prevent button from shrinking */
+  margin-left: 0.8rem; /* Space between text and button */
+}
+
+.refresh-button:hover {
+  background-color: #ffebeb; /* Lighter red on hover */
+  transform: rotate(360deg) scale(1.05); /* Subtle scale with rotation */
+}
+
+/* Server Status Display */
+.server-status-display {
+  padding: 1rem; /* More padding */
+  border-radius: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Aligns content to the start */
+  gap: 0.7rem; /* Space between icon and text */
+  margin-bottom: 2rem; /* More margin */
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+}
+
+.server-status-display .server-status-icon {
+  margin-right: 0; /* Removed margin here as gap handles it */
+  font-size: 1.3rem; /* Slightly larger icon */
+}
+
+.server-status-display .server-status-text {
+  flex-grow: 1; /* Allow text to take remaining space */
+}
+
+.server-status-display .refresh-button {
+  margin-left: auto; /* Pushes the refresh button to the far right */
+}
+
+.server-status-display.server-status-accessible {
+  background-color: #e6ffe6; /* Very light green */
+  border: 1px solid #b3ffb3; /* Light green border */
+  color: #008000; /* Dark green text */
+}
+
+.server-status-display.server-status-inaccessible {
+  background-color: #fff5f5; /* Very light red */
+  border: 1px solid #ffdddd; /* Light red border */
+  color: #d32f2f; /* Dark red text */
+}
+
+
+/* Manual Chainage Section */
+.manual-chainage-section {
+  margin-bottom: 2rem; /* More margin */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.chainage-title {
+  color: #4a4a4a; /* Medium gray */
+  font-weight: 600;
+  margin-bottom: 0.7rem; /* More margin */
+  display: flex;
+  align-items: center;
+}
+
+.chainage-input {
+  width: 100%;
+  padding: 0.9rem; /* More padding */
+  border: 1px solid #d1d5db;
+  border-radius: 0.7rem; /* More rounded */
+  font-size: 1.15rem; /* Slightly larger font */
+  box-sizing: border-box;
+  color: #374151;
+  transition: all 0.3s ease-in-out;
+}
+
+.chainage-input:focus {
+  outline: none;
+  border-color: #000000; /* Black focus border */
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1); /* Slightly larger, softer black shadow */
+}
+
+.chainage-description {
+  font-size: 0.88rem; /* Slightly larger font */
+  color: #6b7280;
+  margin-top: 0.5rem;
+  font-style: italic; /* Italic for description */
+}
+
+/* Image Capture/Upload Buttons */
+.image-buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem; /* Increased gap */
+  margin-bottom: 2rem; /* More margin */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.image-button {
+  padding: 1.4rem; /* More padding */
+  background-color: #f0f0f0;
+  color: #333333;
+  border-radius: 1.25rem; /* More rounded */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.25s ease-in-out;
+  border: none;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.image-button:hover {
+  background-color: #e0e0e0;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px); /* More pronounced lift */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.image-button-icon {
+  font-size: 2.2rem; /* Larger icon */
+  margin-bottom: 0.7rem;
+}
+
+.image-button-text {
+  font-weight: 600;
+  font-size: 1rem; /* Slightly larger text */
+}
+
+/* Hidden File Input */
+.hidden-file-input {
+  display: none;
+}
+
+/* Drag and Drop Area */
+.drag-drop-area {
+  border: 2px dashed #d1d5db;
+  border-radius: 1.25rem; /* More rounded */
+  padding: 3rem; /* More padding */
+  text-align: center;
+  margin-bottom: 2rem; /* More margin */
+  transition: all 0.35s ease-in-out; /* Smoother transition */
+  cursor: pointer;
+  background-color: #fcfcfc;
+}
+
+.drag-drop-area.drag-over {
+  border-color: #000000;
+  background-color: #e8e8e8; /* Softer gray on drag over */
+}
+
+.drag-drop-icon {
+  font-size: 3.5rem; /* Larger icon */
+  color: #9a9a9a; /* Softer gray */
+  margin-bottom: 1rem;
+}
+
+.drag-drop-text {
+  color: #4a4a4a;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.drag-drop-subtext {
+  font-size: 0.9rem; /* Slightly larger font */
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Selected Image Previews */
+.image-previews-grid {
+  margin-bottom: 2rem; /* More margin */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem; /* Increased gap */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.image-preview-item {
+  position: relative;
+  width: 100%;
+  height: 6.5rem; /* Slightly taller */
+  border-radius: 0.8rem; /* More rounded */
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease-in-out;
+}
+
+.image-preview-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.remove-image-button {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  background-color: #cc0000;
+  color: #ffffff;
+  border-radius: 50%;
+  width: 2rem; /* Larger touch target */
+  height: 2rem; /* Larger touch target */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem; /* Larger icon */
+  transition: all 0.25s ease-in-out;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+.remove-image-button:hover {
+  background-color: #990000;
+  transform: scale(1.15);
+}
+
+/* Run Analysis Button */
+.run-analysis-button {
+  width: 100%;
+  padding: 1.4rem; /* More padding */
+  border-radius: 1.25rem; /* More rounded */
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.3rem; /* Larger text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.25); /* Deeper shadow */
+  transition: all 0.35s ease-in-out; /* Smoother transition */
+  border: none;
+  cursor: pointer;
+  background-color: #000000; /* Black button */
+  color: #ffffff; /* White text */
+}
+
+.run-analysis-button:hover {
+  background-color: #333333;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.4);
+}
+
+.run-analysis-button.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.analysis-hint {
+  text-align: center;
+  font-size: 0.88rem;
+  color: #6b7280;
+  margin-top: 0.8rem;
+  font-style: italic;
+}
+
+/* Error Message Display */
+.error-message {
+  background-color: #fff5f5;
+  border: 1px solid #ffdddd;
+  color: #d32f2f;
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+  position: relative;
+  margin-top: 2rem; /* More margin */
+  font-size: 0.95rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.error-message strong {
+  font-weight: 700;
+  margin-right: 0.6rem;
+}
+
+.error-text {
+  display: inline;
+}
+
+/* Analysis Results Display */
+.analysis-results-container {
+  margin-top: 2.5rem; /* More margin */
+  background-color: #fcfcfc; /* Lighter background for results section */
+  padding: 2rem; /* More padding */
+  border-radius: 1.25rem; /* More rounded */
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.08); /* Stronger inner shadow */
+  transition: all 0.4s ease-in-out;
+}
+
+.analysis-results-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 1.5rem; /* More margin */
+}
+
+.analysis-result-item {
+  background-color: #ffffff;
+  padding: 1.5rem; /* More padding */
+  border-radius: 0.8rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.2rem; /* More margin */
+  border: 1px solid #e8e8e8; /* Softer border */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.analysis-result-item:last-child {
+  margin-bottom: 0;
+}
+
+.result-image-container {
+    width: 100%;
+    height: 180px; /* Taller image container */
+    margin-bottom: 1.2rem; /* More margin */
+    border-radius: 0.6rem;
+    overflow: hidden;
+    background-color: #e8e8e8; /* Lighter placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.result-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+
+.result-label {
+  color: #4a4a4a;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.result-value {
+  font-weight: 500;
+  color: #2c2c2c;
+}
+
+.gps-valid {
+  color: #008000; /* Dark green for valid */
+  font-weight: 600;
+}
+
+.gps-invalid {
+  color: #ff8c00; /* Dark orange for invalid */
+  font-weight: 600;
+}
+
+.detected-labels-section {
+  margin-top: 1rem; /* More margin */
+}
+
+.detected-labels-title {
+  font-weight: 600;
+  color: #4a4a4a;
+}
+
+.detected-labels-list {
+  list-style-type: disc;
+  list-style-position: inside;
+  font-size: 0.9rem;
+  color: #6b7280;
+  padding-left: 0;
+  line-height: 1.6; /* Improved readability */
+}
+
+.no-labels-text {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Confidence Scores Section */
+.confidence-scores-section {
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e8e8e8; /* Softer separator */
+    transition: all 0.3s ease-in-out;
+}
+
+.confidence-scores-title {
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 0.6rem;
+}
+
+.confidence-scores-list {
+    list-style-type: none;
+    padding-left: 0;
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.5;
+}
+
+.confidence-scores-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Space out label and bar */
+    margin-bottom: 0.4rem;
+}
+
+.confidence-scores-list li:last-child {
+    margin-bottom: 0;
+}
+
+.confidence-scores-list li span {
+    flex-grow: 1; /* Allow text to take space */
+    margin-right: 0.5rem; /* Space between text and bar */
+    text-align: right; /* Align text to the right of its space */
+}
+
+.confidence-bar-container {
+    width: 60%; /* Adjust width of the bar container */
+    height: 8px; /* Height of the bar */
+    background-color: #e0e0e0; /* Background of the bar */
+    border-radius: 4px; /* Rounded corners for the bar */
+    overflow: hidden;
+}
+
+.confidence-bar-fill {
+    height: 100%;
+    background-color: #4a4a4a; /* Dark gray fill */
+    border-radius: 4px;
+    transition: width 0.5s ease-out; /* Smooth fill animation */
+}
+
+
+/* Generate Description Button */
+.generate-description-button {
+  margin-top: 1.5rem; /* More margin */
+  width: 100%;
+  padding: 0.8rem; /* More padding */
+  border-radius: 0.7rem;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem; /* Slightly larger font */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+  background-color: #4a4a4a; /* Darker gray */
+  color: #ffffff;
+}
+
+.generate-description-button:hover {
+  background-color: #2c2c2c; /* Even darker gray on hover */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.generate-description-button.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.image-description-output {
+  margin-top: 1.2rem;
+  padding: 1.2rem;
+  background-color: #fcfcfc; /* Lighter background */
+  border-radius: 0.8rem;
+  font-size: 0.9rem;
+  color: #4b5563;
+  border: 1px solid #e8e8e8;
+  line-height: 1.6;
+  transition: all 0.3s ease-in-out;
+}
+
+.description-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #2c2c2c;
+}
+
+/* Summarize All Results Button */
+.summarize-all-button {
+  margin-top: 2rem; /* More margin */
+  width: 100%;
+  padding: 1.2rem; /* More padding */
+  border-radius: 1.25rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.25);
+  transition: all 0.35s ease-in-out;
+  border: none;
+  cursor: pointer;
+  background-color: #000000; /* Black button */
+  color: #ffffff;
+}
+
+.summarize-all-button:hover {
+  background-color: #333333;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px -8px rgba(0, 0, 0, 0.4);
+}
+
+.summarize-all-button.disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.overall-summary-output {
+  margin-top: 1.2rem;
+  padding: 1.4rem;
+  background-color: #fcfcfc;
+  border-radius: 0.8rem;
+  color: #4b5563;
+  border: 1px solid #e8e8e8;
+  line-height: 1.6;
+  transition: all 0.3s ease-in-out;
+}
+
+.overall-summary-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #2c2c2c;
+  margin-bottom: 0.7rem;
+}
+
+.overall-summary-text {
+  font-size: 0.95rem;
+}
+
+/* Upload Again Button */
+.upload-again-button {
+  width: 100%;
+  padding: 1.2rem;
+  border-radius: 1rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  border: none;
+  cursor: pointer;
+  background-color: #6a6a6a; /* Medium dark gray */
+  margin-top: 2rem; /* More space */
+}
+
+.upload-again-button:hover {
+  background-color: #4a4a4a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px -3px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  body {
+    align-items: flex-start;
+    padding: 0.5rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .app-container {
+    padding: 0.5rem;
+  }
+
+  .main-card {
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.15), 0 4px 10px -4px rgba(0, 0, 0, 0.08);
+  }
+
+  .app-title {
+    font-size: 1.7rem;
+  }
+
+  .demo-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .location-alert,
+  .server-status-display,
+  .chainage-input,
+  .image-button,
+  .drag-drop-area,
+  .run-analysis-button,
+  .error-message,
+  .analysis-result-item,
+  .generate-description-button,
+  .summarize-all-button,
+  .overall-summary-output,
+  .upload-again-button {
+    padding: 0.9rem;
+    border-radius: 0.7rem;
+  }
+
+  .image-button-icon {
+    font-size: 1.8rem;
+  }
+
+  .drag-drop-icon {
+    font-size: 3rem;
+  }
+
+  .remove-image-button {
+    width: 1.7rem;
+    height: 1.7rem;
+    font-size: 0.9rem;
+  }
+
+  .run-analysis-button {
+    padding: 1.1rem;
+    font-size: 1.1rem;
+  }
+
+  .analysis-results-title {
+    font-size: 1.4rem;
+  }
+
+  .generate-description-button,
+  .summarize-all-button,
+  .upload-again-button {
+    font-size: 0.95rem;
+  }
+
+  .spinner {
+      width: 45px;
+      height: 45px;
+  }
+  .loading-message {
+      font-size: 1.05rem;
+  }
+  .progress-bar-container {
+      height: 0.7rem;
+  }
+}
+
+/* Further adjustments for very small screens (e.g., old phones) */
+@media (max-width: 380px) {
+  .main-card {
+    padding: 1.2rem;
+  }
+  .app-title {
+    font-size: 1.4rem;
+  }
+  .image-buttons-grid {
+    grid-template-columns: 1fr; /* Stack buttons vertically */
+  }
+  .image-preview-item {
+    height: 5.5rem;
+  }
+  .image-previews-grid {
+    grid-template-columns: repeat(2, 1fr); /* Adjust grid for previews */
+  }
+  .remove-image-button {
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
   }
 }
